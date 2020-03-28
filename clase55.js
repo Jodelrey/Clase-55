@@ -33,21 +33,25 @@ const palabraConMasPuntaje = (palabras) => {
       { nombre : 'Sapo'},
 
   ]
+  
+   const cantidades =
+    {Sapo: 2,
+    Leon: 1,
+    Foca: 1}
+  
+   // * "Sapo"
 
   const animalMasRepetido = animales =>{
-
     const aCantidades = (cantidades, animal) => {
         cantidades[animal.nombre] =  cantidades[animal.nombre] + 1 || 1
         return cantidades
     }
-
-    //primero tengo que fijarme si el reduce devuelve exactamente la misma estructura que el objeto que recorre
+    //primero tengo que fijarme si el reduce devuelve exactamente la misma estructura que el objeto que recorre. De no ser asi, tengo que pasarle como segundo parametro formato de dato que deseo obtener, pero vacio (0, "", [], {})
     const cantidades = animales.reduce(aCantidades, {})
-    const nombres = Object.keys(cantidades)
-    const aMayorCantidad = (masRepetido, animal) => cantidades[animal] >cantidades[masRepeticiones] ? animal : masRepetido
+    const nombres = Object.keys(cantidades) // -> ["Sapo", "Leon", "Foca"]
+    const aMayorCantidad = (masRepetido, animal) => cantidades[animal] > cantidades[masRepetido] ? animal : masRepetido
     return nombres.reduce(aMayorCantidad)
   }
-
 
 
 
